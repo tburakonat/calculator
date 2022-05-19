@@ -15,8 +15,8 @@ body {
     padding: 30px 30px;
     border: 1px solid black;
     border-radius: 10px;
-    width: 300px;
-    height: 400px;
+    width: 31.25em;
+    height: 43.75em;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
