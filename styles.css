@@ -26,6 +26,9 @@ body {
 .display {
     border: 1px solid black;
     grid-column: span 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .clear-all,
