@@ -2,24 +2,24 @@ function sum(x, y) {
     let num1 = parseInt(x)
     let num2 = parseInt(y)
     let result = num1 + num2
-    display.innerText = result
-    displayValue = result
+    display.innerText = result.toString()
+    displayValue = result.toString()
 }
 
 function subtract(x, y) {
     let num1 = parseInt(x)
     let num2 = parseInt(y)
     let result = num1 - num2
-    display.innerText = result
-    displayValue = result
+    display.innerText = result.toString()
+    displayValue = result.toString()
 }
 
 function multiply(x, y) {
     let num1 = parseInt(x)
     let num2 = parseInt(y)
     let result = num1 * num2
-    display.innerText = result
-    displayValue = result
+    display.innerText = result.toString()
+    displayValue = result.toString()
 }
 
 function divide(x, y) {
@@ -27,8 +27,8 @@ function divide(x, y) {
     let num2 = parseInt(y)
     let result
     y === 0 ? result = 'Error' : result = num1 / num2
-    display.innerText = result
-    displayValue = result
+    display.innerText = result.toString()
+    displayValue = result.toString()
 }
 
 function operate(operation, x, y) {
@@ -86,6 +86,14 @@ clearButton.addEventListener("click", () => {
     display.innerText = ""
     MathData.operands = []
     MathData.operation = null
+})
+
+const deleteButton = document.querySelector(".backspace")
+
+deleteButton.addEventListener("click", () => {
+    let length = displayValue.length
+    displayValue = display.innerText.slice(0, length - 1)
+    display.innerText = displayValue
 })
 
 const equalsButton = document.querySelector("#equals")
