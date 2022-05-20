@@ -3,34 +3,94 @@
     box-sizing: border-box;
 }
 
+html {
+    /* font-size: 24px; */
+    font-family: 'Press Start 2P', cursive;
+}
+
 body {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #F7FFF7;
+}
+
+button {
+    font-family: 'Press Start 2P', cursive;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 .grid-container {
     padding: 30px 30px;
     border: 1px solid black;
+    box-shadow: 0 0 5px black;
     border-radius: 10px;
-    width: 31.25em;
-    height: 43.75em;
+    width: 500px;
+    height: 700px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
     grid-gap: 5px;
+    background-color: #292F36;
 }
 
 .display {
-    border: 1px solid black;
+    border: 1px solid #c1cac1;
+    padding: 10px;
+    background-color: #292F36;
+    color: #e4f7e4;
+    border-radius: 5px;
     grid-column: span 4;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    font-size: 30px;
+    overflow: scroll;
 }
 
+.clear-all,
 .zero {
     grid-column: span 2;
+}
+
+.clear-all,
+.backspace {
+    background-color: #EE6055;
+}
+
+.clear-all:hover,
+.backspace:hover {
+    background-color: rgba(238, 96, 85, 0.9);
+}
+
+.equals {
+    background-color: mediumspringgreen;
+}
+
+.equals:hover {
+    background-color: rgba(0, 250, 154, 0.9);
+}
+
+.number {
+    background-color: rgba(170, 246, 131, 0.9);
+}
+
+.number:hover {
+    background-color: rgba(170, 246, 131, 1);
+}
+
+.operator {
+    background-color: #F1A208;
+}
+
+.operator:hover {
+    background-color: rgba(241, 162, 8, 0.9);
 }
