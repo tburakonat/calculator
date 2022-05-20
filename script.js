@@ -11,7 +11,12 @@ function multiply(arr) {
 }
 
 function divide(arr) {
-    return arr[0] / arr[1]
+    let result = arr[0] / arr[1]
+    if (result === Infinity) {
+        return "Infinity"
+    } else {
+        return result
+    }
 }
 
 function operate(operation, arr) {
@@ -74,9 +79,13 @@ equalsButton.addEventListener("click", () => {
     operands.push(display.textContent)
     operands = operands.map(item => parseInt(item))
     let result = operate(currentOperation, operands)
-    if (result) {
+    if (isFinite(result)) {
         display.textContent = Math.round(result * 1000) / 1000
-    }   
+    } else if (result === "Infinity") {
+        display.textContent = "You can't divide by 0!"
+    } else {
+        display.textContent = "Please try again..."
+    }
     operands = []
     currentOperation = null
 })
