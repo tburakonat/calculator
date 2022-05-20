@@ -31,6 +31,7 @@ body {
     align-items: flex-end;
 }
 
+.clear-all,
 .zero {
     grid-column: span 2;
 }

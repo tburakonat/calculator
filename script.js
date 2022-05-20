@@ -1,59 +1,82 @@
-function sum(x, y) {
- 
+function sum(arr) {
+    return arr[0] + arr[1]
 }
 
-function subtract(x, y) {
-
+function subtract(arr) {
+    return arr[0] - arr[1]
 }
 
-function multiply(x, y) {
-
+function multiply(arr) {
+    return arr[0] * arr[1]
 }
 
-function divide(x, y) {
-
+function divide(arr) {
+    return arr[0] / arr[1]
 }
 
-function operate(operation, x, y) {
-
+function operate(operation, arr) {
+    if (operation === "sum") {
+        return sum(arr)
+    } else if (operation === "subtract") {
+        return subtract(arr)
+    } else if (operation === "multiply") {
+        return multiply(arr)
+    } else if (operation === "divide") {
+        return divide(arr)
+    }
 }
+
+let currentOperation =  null
+let operands = []
 
 const display = document.querySelector(".display")
-let displayValue = ""
+// let displayValue = ""
 
-const MathData = {
-    operation: null,
-    operands: [],
-}
-
-const numberButtons = ([...document.getElementsByClassName("number")])
+const numberButtons = [...document.getElementsByClassName("number")]
 numberButtons.forEach(button => {
-    button.addEventListener("click", e => {
-
+    button.addEventListener("click", (e) => {
+        const {textContent} = e.target
+        if (textContent.includes(".") && display.textContent.includes(".")) return
+        if (textContent === "." && display.textContent === "") {
+            display.textContent += "0"
+        }
+        display.textContent += textContent
     })
 })
 
 const operators = [...document.getElementsByClassName("operator")]
 operators.forEach(operator => {
-    operator.addEventListener("click", () => {
-
+    operator.addEventListener("click", (e) => {
+        if (currentOperation) return
+        if (!display.textContent) return
+        operands.push(display.textContent)
+        currentOperation = e.target.dataset.operation
+        display.textContent = ""
     })
 })
 
 const clearButton = document.querySelector(".clear-all")
-
 clearButton.addEventListener("click", () => {
-    
+    displayValue = ""
+    display.textContent = displayValue
+    currentOperation = ""
+    operands = []
 })
 
 const deleteButton = document.querySelector(".backspace")
-
 deleteButton.addEventListener("click", () => {
-    
+    let length = display.textContent.length
+    display.textContent = display.textContent.slice(0, length - 1)
 })
 
-const equalsButton = document.querySelector("#equals")
-
+const equalsButton = document.querySelector(".equals")
 equalsButton.addEventListener("click", () => {
-    
+    operands.push(display.textContent)
+    operands = operands.map(item => parseInt(item))
+    let result = operate(currentOperation, operands)
+    if (result) {
+        display.textContent = Math.round(result * 1000) / 1000
+    }   
+    operands = []
+    currentOperation = null
 })
